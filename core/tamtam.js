@@ -53,6 +53,10 @@ const _updateTypes = [
     'chat_title_changed'
 ];
 
+const _uploadTypes = [
+    'photo','video','audio','file'
+];
+
 class TamTamBot extends EventEmitter {
 
     constructor(configs, options = {}) {
@@ -611,12 +615,19 @@ class TamTamBot extends EventEmitter {
      * @param form
      */
     getUploadUrl(type, form = {}) {
-        form.type = type;
-        form.query = this._buildQuery(form);
-        form.method = this._methodBuilder(_methods.GET_UPLOAD_URL);
-        return TamTamBot._request({form})
+        if (type !== undefined) {
+            if (_uploadTypes.includes(type)) {
+                form.type = type;
+                form.query = this._buildQuery(form);
+                form.method = this._methodBuilder(_methods.GET_UPLOAD_URL);
+                return TamTamBot._request({form})
+            } else {
+                throw new Error('Invalid parameter \`type\`. Should be one of: [photo,video,audio,file]');
+            }
+        } else {
+            throw new Error('Invalid parameter \`type\`. Should be one of: [photo,video,audio,file]');
+        }
     }
-
 }
 
 module.exports = TamTamBot;
