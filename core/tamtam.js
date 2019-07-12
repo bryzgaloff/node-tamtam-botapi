@@ -615,15 +615,11 @@ class TamTamBot extends EventEmitter {
      * @param form
      */
     getUploadUrl(type, form = {}) {
-        if (type !== undefined) {
-            if (_uploadTypes.includes(type)) {
-                form.type = type;
-                form.query = this._buildQuery(form);
-                form.method = this._methodBuilder(_methods.GET_UPLOAD_URL);
-                return TamTamBot._request({form})
-            } else {
-                throw new Error('Invalid parameter \`type\`. Should be one of: [photo,video,audio,file]');
-            }
+        if (type !== undefined || !_uploadTypes.includes(type)) {
+            form.type = type;
+            form.query = this._buildQuery(form);
+            form.method = this._methodBuilder(_methods.GET_UPLOAD_URL);
+            return TamTamBot._request({form})
         } else {
             throw new Error('Invalid parameter \`type\`. Should be one of: [photo,video,audio,file]');
         }
