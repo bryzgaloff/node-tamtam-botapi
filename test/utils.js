@@ -40,4 +40,3 @@ function isUserChatMember(token, chatId, userIds) {
         return resp.members;
     });
 }
-
