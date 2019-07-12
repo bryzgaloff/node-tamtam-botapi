@@ -223,6 +223,35 @@ class TamTamBot extends EventEmitter {
         });
     }
 
+    static _fileUpload(parameters = {}) {
+        const formData = {
+            name: 'file',
+            file: {
+                value: 'package.json',
+                options: {
+                    filename: parameters.fileName
+                }
+            }
+        };
+        const options = {};
+        options.method = 'POST';
+        options.url = parameters.url;
+        options.formData = formData;
+        return request(null, options, function (error, response, body) {});
+    }
+
+    /**
+     * 
+     * @param {String} fileName 
+     * @param {String} uploadUrl 
+     * @param {*} form 
+     */
+    getFileUploadToken(fileName, uploadUrl, form = {}) {
+        form.fileName = fileName;
+        form.url = uploadUrl;
+        return _fileUpload(form);
+    }
+
     /**
      *
      * @param {Object} update
