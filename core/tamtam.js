@@ -249,7 +249,7 @@ class TamTamBot extends EventEmitter {
     getFileUploadToken(fileName, uploadUrl, form = {}) {
         form.fileName = fileName;
         form.url = uploadUrl;
-        return _fileUpload(form);
+        return _fileUpload({form});
     }
 
     /**
