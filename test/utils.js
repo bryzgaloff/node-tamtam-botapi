@@ -12,7 +12,12 @@ exports = module.exports = {
     /**
      *
      */
-    isUserChatMember
+    isUserChatMember,
+
+    /**
+     * 
+     */
+    isSubscribeOnUrl
 };
 
 /**
@@ -39,4 +44,18 @@ function isUserChatMember(token, chatId, userIds) {
         resp = JSON.parse(resp);
         return resp.members;
     });
+}
+
+/**
+ * 
+ * @param {Object} arr 
+ * @param {String} item 
+ */
+function isSubscribeOnUrl(arr, item) {
+
+    function isContains(subscription) {
+        return subscription.url == item;
+    }
+
+    return arr.subscriptions.some(isContains);
 }

@@ -159,9 +159,7 @@ describe('TamTamBotAPI', function tamtamSuite() {
                     let body = JSON.parse(response.body);
                     assert.ok(is.object(body));
                     assert.ok(is.equal(body.code, 'proto.payload'));
-                    //assert.ok(is.equal(body.message, '/action: instance value ("' + invalid_action + '") in unknown'));
                     assert.ok(is.equal(body.message, 'action: value not found in enum. Possible values are: typing_on, typing_off, sending_photo, sending_video, sending_audio, mark_seen'));
-                    console.log(body.message);
                 })
             })
         });
@@ -194,22 +192,24 @@ describe('TamTamBotAPI', function tamtamSuite() {
     });
 
     describe('#subscriptions', function subscriptions() {
-        const url = 'http://test.botapi.ok';
+        const url_1 = 'http://test1.botapi.ok';
+        const url_2 = 'http://test2.botapi.ok';
         before(function () {
-            bot_1.subscribe({url: url});
+            bot_1.subscribe({url: url_1});
+            bot_1.subscribe({url: url_2});
         });
         describe('#getSubscriptions', function getSubscriptionsSuite() {
             it('should returns list of all subscriptions', function test() {
                 return bot_1.getSubscriptions().then( resp => {
                     resp = JSON.parse(resp);
                     assert.ok(is.object(resp));
-                    assert.ok(is.equal(resp.subscriptions[0].url, url))
+                    assert.ok(is.equal(utils.isSubscribeOnUrl(resp, url_1), true))
                 })
             })
         });
         describe('#unsubscribe', function unsubscribeSuite() {
             it('should returns boolean', function test() {
-                return bot_1.unsubscribe(url).then( resp => {
+                return bot_1.unsubscribe(url_2).then( resp => {
                     resp = JSON.parse(resp);
                     assert.ok(is.object(resp));
                     assert.ok(is.equal(resp.success, true));
