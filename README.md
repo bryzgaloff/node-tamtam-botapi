@@ -52,13 +52,6 @@ app.post(`/${path}`, (req, res) => {
     });
 });
 
-// GET method route
-app.get('/webhook', function (req, res) {
-    res.send({
-        success: true
-    });
-});
-
 // Start Express Server
 app.listen(PORT, () => {
     console.log(`Express server is listening on ${PORT}`);

@@ -160,8 +160,8 @@ describe('TamTamBotAPI', function tamtamSuite() {
                     assert.ok(is.object(body));
                     assert.ok(is.equal(body.code, 'proto.payload'));
                     //assert.ok(is.equal(body.message, '/action: instance value ("' + invalid_action + '") in unknown'));
-                    assert.ok(is.equal(body.message, '/action: instance value ("' + invalid_action + '") not found in enum (possible values: ["typing_on","typing_off","sending_photo","sending_video","sending_audio","mark_seen"])'));
-                    //console.log(body.message);
+                    assert.ok(is.equal(body.message, 'action: value not found in enum. Possible values are: typing_on, typing_off, sending_photo, sending_video, sending_audio, mark_seen'));
+                    console.log(body.message);
                 })
             })
         });
