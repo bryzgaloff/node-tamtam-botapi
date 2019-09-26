@@ -50,9 +50,9 @@ const _updateTypes = [
     'bot_removed',
     'user_added',
     'user_removed',
-    'bot_started',
-    'chat_title_changed',
-    'message_construction_request'
+    'bot_started'
+    // 'chat_title_changed',
+    // 'message_construction_request'
 ];
 
 const _uploadTypes = [
