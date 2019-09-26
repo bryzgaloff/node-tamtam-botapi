@@ -255,6 +255,7 @@ class TamTamBot extends EventEmitter {
         if (update.update_type !== undefined) {
             if (_updateTypes.includes(update.update_type)) {
                 this.emit(update.update_type, update);
+                console.log(update.update_type);
             } else {
                 throw new Error('Can not find parameter \'' + update.update_type + '\' in response body');
             }
