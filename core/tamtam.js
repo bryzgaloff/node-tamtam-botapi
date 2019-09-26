@@ -27,6 +27,7 @@ const _methods = {
     EDIT_MESSAGE: 'editMessage',
     DELETE_MESSAGE: 'deleteMessage',
     ANSWER_ON_CALLBACK: 'answerOnCallback',
+    CONSTRUCTS_MESSAGE: 'constructsMessage',
     /**
      * subscriptions
      */
@@ -50,7 +51,8 @@ const _updateTypes = [
     'user_added',
     'user_removed',
     'bot_started',
-    'chat_title_changed'
+    'chat_title_changed',
+    'message_construction_request'
 ];
 
 const _uploadTypes = [
@@ -149,6 +151,10 @@ class TamTamBot extends EventEmitter {
                 builder.verbs = 'POST';
                 builder.url = `${this.options.baseApiUrl}/answers`;
                 break;
+            case _methods.CONSTRUCTS_MESSAGE:
+                    builder.verbs = 'POST';
+                    builder.url = `${this.options.baseApiUrl}/answers/constructor`;
+                    break;
             case _methods.GET_SUBSCRIPTIONS:
                 builder.verbs = 'GET';
                 builder.url = `${this.options.baseApiUrl}/subscriptions`;
@@ -200,6 +206,7 @@ class TamTamBot extends EventEmitter {
         qs.type = form.type;
         qs.access_token = this.token;
         qs.v = this.version;
+        qs.session_id = this.sessionId;
         return qs;
     }
 
@@ -239,18 +246,6 @@ class TamTamBot extends EventEmitter {
         options.formData = formData;
         return request(null, options, function (error, response, body) {});
     }
-
-    // /**
-    //  * 
-    //  * @param {String} fileName 
-    //  * @param {String} uploadUrl 
-    //  * @param {*} form 
-    //  */
-    // getFileUploadToken(fileName, uploadUrl, form = {}) {
-    //     form.fileName = fileName;
-    //     form.url = uploadUrl;
-    //     return _fileUpload({form});
-    // }
 
     /**
      *
@@ -561,6 +556,21 @@ class TamTamBot extends EventEmitter {
         form.callback_id = callbackId;
         form.body = body;
         form.method = this._methodBuilder(_methods.ANSWER_ON_CALLBACK);
+        form.query = this._buildQuery(form);
+        return TamTamBot._request({form})
+    }
+
+    /**
+     * 
+     * @param {String} sessionId 
+     * @param {Object} body 
+     * @param form 
+    * @returns {request.Request}
+     */
+    constructsMessage(sessionId, body, form = {}) {
+        form.sessionId = sessionId;
+        form.body = body;
+        form.method = this._methodBuilder(_methods.CONSTRUCTS_MESSAGE);
         form.query = this._buildQuery(form);
         return TamTamBot._request({form})
     }
