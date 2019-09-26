@@ -252,6 +252,7 @@ class TamTamBot extends EventEmitter {
      * @param {Object} update
      */
     webhookUpdateTypeHandler(update = {}) {
+        console.log('update.update_type: ' + update.update_type);
         if (update.update_type !== undefined) {
             if (_updateTypes.includes(update.update_type)) {
                 this.emit(update.update_type, update);
