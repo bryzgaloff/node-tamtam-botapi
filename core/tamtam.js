@@ -50,9 +50,9 @@ const _updateTypes = [
     'bot_removed',
     'user_added',
     'user_removed',
-    'bot_started'
-    // 'chat_title_changed',
-    // 'message_construction_request'
+    'bot_started',
+    'chat_title_changed',
+    'message_construction_request'
 ];
 
 const _uploadTypes = [
@@ -206,7 +206,7 @@ class TamTamBot extends EventEmitter {
         qs.type = form.type;
         qs.access_token = this.token;
         qs.v = this.version;
-        qs.session_id = this.sessionId;
+        qs.session_id = this.session_id;
         return qs;
     }
 
@@ -255,7 +255,6 @@ class TamTamBot extends EventEmitter {
         if (update.update_type !== undefined) {
             if (_updateTypes.includes(update.update_type)) {
                 this.emit(update.update_type, update);
-                console.log(update.update_type);
             } else {
                 throw new Error('Can not find parameter \'' + update.update_type + '\' in response body');
             }
@@ -603,7 +602,7 @@ class TamTamBot extends EventEmitter {
      * @returns {request.Request}
      */
     constructsMessage(sessionId, body, form = {}) {
-        form.sessionId = sessionId;
+        form.session_id = sessionId;
         form.body = body;
         form.method = this._methodBuilder(_methods.CONSTRUCTS_MESSAGE);
         form.query = this._buildQuery(form);
