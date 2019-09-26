@@ -349,7 +349,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -368,7 +368,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -386,7 +386,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -403,7 +403,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -420,7 +420,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -442,7 +442,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -461,7 +461,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -480,7 +480,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -508,7 +508,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -552,7 +552,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -570,7 +570,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -591,7 +591,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -608,7 +608,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -624,7 +624,7 @@ class TamTamBot extends EventEmitter {
         form.query = this._buildQuery(form);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -643,7 +643,7 @@ class TamTamBot extends EventEmitter {
         form.method = this._methodBuilder(_methods.SUBSCRIBE);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -662,7 +662,7 @@ class TamTamBot extends EventEmitter {
         form.method = this._methodBuilder(_methods.UNSUBSCRIBE);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -686,7 +686,7 @@ class TamTamBot extends EventEmitter {
         form.method = this._methodBuilder(_methods.GET_UPDATES);
         return TamTamBot._request({
             form
-        })
+        });
     }
 
     /**
@@ -704,7 +704,7 @@ class TamTamBot extends EventEmitter {
             form.method = this._methodBuilder(_methods.GET_UPLOAD_URL);
             return TamTamBot._request({
                 form
-            })
+            });
         } else {
             throw new Error('Invalid parameter \`type\`. Should be one of: [photo,video,audio,file]');
         }
