@@ -50,7 +50,7 @@ const _updateTypes = [
     'bot_removed',
     'user_added',
     'user_removed',
-    //'bot_started',
+    'bot_started',
     'chat_title_changed',
     'message_construction_request'
 ];
@@ -252,6 +252,7 @@ class TamTamBot extends EventEmitter {
      * @param {Object} update
      */
     webhookUpdateTypeHandler(update = {}) {
+        console.log(update, _updateTypes.includes(update.update_type));
         if (update.update_type !== undefined) {
             if (_updateTypes.includes(update.update_type)) {
                 this.emit(update.update_type, update);
