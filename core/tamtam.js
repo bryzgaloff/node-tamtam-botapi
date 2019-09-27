@@ -52,8 +52,7 @@ const _updateTypes = [
     'user_removed',
     'bot_started',
     'chat_title_changed',
-    'message_construction_request',
-    'test'
+    'message_construction_request'
 ];
 
 const _uploadTypes = [
@@ -205,9 +204,9 @@ class TamTamBot extends EventEmitter {
         qs.timeout = form.timeout;
         qs.types = form.types;
         qs.type = form.type;
+        qs.session_id = form.session_id;
         qs.access_token = this.token;
         qs.v = this.version;
-        qs.session_id = this.session_id;
         return qs;
     }
 

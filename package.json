@@ -1,6 +1,6 @@
 {
   "name": "node-tamtam-botapi",
-  "version": "0.1.9-1b",
+  "version": "0.1.9-2b",
   "description": "TamTam Bot API",
   "main": "./index.js",
   "directories": {
