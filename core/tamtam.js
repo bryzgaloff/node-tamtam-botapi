@@ -52,7 +52,8 @@ const _updateTypes = [
     'user_removed',
     'bot_started',
     'chat_title_changed',
-    'message_construction_request'
+    'message_construction_request',
+    'test'
 ];
 
 const _uploadTypes = [
@@ -223,7 +224,7 @@ class TamTamBot extends EventEmitter {
         options.qs = parameters.form.query;
         options.body = JSON.stringify(parameters.form.body);
         return request(null, options, function (error, response, body) {
-            if (error && response.statusCode != 200) {
+            if (error && response.statusCode !== 200) {
                 console.log('Response statusCode' + response.statusCode);
                 console.log('Response body: ' + body);
             }
